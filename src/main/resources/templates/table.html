@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Hover Rows</h2>
+   <a th:href="@{/add}" style="margin: 20px 0" class="btn btn-primary">Add</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>SNo</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Photo</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each =" user :${student}">
+            <td th:text ="${user.id}"></td>
+            <td th:text ="${user.name}" ></td>
+            <td th:text ="${user.phone}"></td>
+            <td th:text ="${user.email}" ></td>
+            <td><img src="/src/main/resources/static/crud/" height="100px" width="100px"  th:src="@{${'/crud/'+ user.imageName}}"></td>
+            <td><a href="" th:href="@{/student/update/{id}(id=${user.id})}" class="btn btn-warning">Update</a></td>
+            <td><a href="" th:href="@{/student/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>

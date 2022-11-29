@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="col-5" enctype="multipart/form-data" action="/sendData" method="post">
+    <div >
+        <label >Choose file</label><br>
+        <input type="file" c name="photo" accept="image/jpeg, image/png"  accept="image/jpeg, image/png" >
+
+    </div>
+
+    <br><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+<div>
+    <h3>List of Documents</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Download Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="image:${images}">
+            <td th:text="${image.Id}" />
+            <td th:text="${image.Name}"/>
+            <td><a th:href="@{'/downloadFile/'+${image.id}}">View</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
